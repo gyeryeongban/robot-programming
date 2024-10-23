@@ -196,10 +196,10 @@ def main():
             return float(x)
         except ValueError:
             return x
-        ret = attempt_float('1.23')
-        print(ret)
-        ret = attempt_float('something')
-        print(ret)
+    ret = attempt_float('1.23')
+    print(ret)
+    ret = attempt_float('something')
+    print(ret)
     
     if __name__ == '__main__' : # main()
         main()

@@ -25,21 +25,7 @@ def arm_move(p, s_time = 500):
         else:
             Arm.Arm_serial_servo_write(id, p[i], int(s_time))
         time.sleep(.1)
-    time.sleep(s_time/1000)
-
-# 로봇팔의 움직임 제어 수정
-# def arm_move_modify(p, s_time = 500):
-#     for i in range(4):
-#         id = i + 1
-#         if id == 5:
-#             time.sleep(.1)
-#             Arm.Arm_serial_servo_write(id, p[i], int(s_time * 1.2))
-#         elif id == 1:
-#              Arm.Arm_serial_servo_write(id, p[i], int(3 * s_time / 4))
-#         else:
-#              Arm.Arm_serial_servo_write(id, p[i], int(s_time))
-#         time.sleep(.1)
-#     time.sleep(s_time / 1000)
+    time.sleep(s_time / 1000)
 
 # 로봇팔 위로 움직이기
 def arm_move_up():
@@ -55,6 +41,7 @@ p_Yellow = [65, 22, 64, 56, 270]
 p_Red = [115, 22, 64, 56, 270]
 p_Green = []
 p_Blue = []
+
 # p_layer_4 = [90, 117, 33, 36, 270]
 # p_layer_3 = [90, 99, 33, 36, 270]
 # p_layer_2 = [90, 71, 33, 36, 270]
