@@ -34,6 +34,7 @@ dst = cv2.warpAffine(img, rotate, (height, width))
 plt.imshow(dst)
 plt.show()
 
+# Binary Image
 grayImg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 ret, thresh1 = cv2.threshold(grayImg, 10, 255, cv2.THRESH_BINARY)

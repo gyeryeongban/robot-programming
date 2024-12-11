@@ -9,6 +9,7 @@ from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D, Flatten
 
 train_csv = pd.read_csv("../input/mnist-in-csv/mnist_train.csv")
 
+# 데이터 전처리
 X_train = []
 for i in train_csv.index:
     X_train.append(train_csv.iloc[i][1:].values.reshape([28, 28]))
@@ -32,23 +33,29 @@ y_train = to_categorical(Y_train)
 print("x_train: ", x_train.shape)
 print("y_train: ", y_train.shape)
 
+# CNN 모델 만들기
 cnn = Sequential()
+# Convolution Layer
 cnn.add(Conv2D(filter = 32, kernel_size = (3, 3). activation = "relu", input_shape = (W, H, 1)))
-cnn.add(MaxPooling2D(pool_size = (2, 2)))
-cnn.add(Flatten())
-cnn.add(Dense(128, activation = "relu"))
-cnn.add(Dense(10, activation = "softmax"))
+cnn.add(MaxPooling2D(pool_size = (2, 2))) # Pooling Layer
+cnn.add(Flatten()) # Change input data to 1 dimension
+
+cnn.add(Dense(128, activation = "relu")) # Fully Connected Layer
+cnn.add(Dense(10, activation = "softmax")) # Softmax
 
 cnn.compile(loss = "categorical_crossentropy", optimizer = "adam", metrics = ["accuracy"])
 
+# 모델 학습하기
 cnn_hist = cnn.fit(x_train, y_train, epochs = 15, batch_size = 100, validation_split = 0.2)
 
+# 모델 시각화
 plt.plot(cnn_hist.history["accuracy"], label = "acc")
 plt.plot(cnn_hist.history["val_accuracy"], label = "val_acc")
 plt.legend()
 plt.zlabel("epoch")
 plt.ylabel("accuracy")
 
+# 모델 평가하기
 pred = cnn.predict(x_test)
 
 pred[10]

@@ -1,3 +1,6 @@
+# 이미지 캡처와 JPEG 바이너리 변환
+    # - 현재 Jupyter notebook 버전 차이로 인한 디스플레이 위젯 생성 불가능
+    # - 이미지에 대한 정보 출력 시 -> 정상 실행
 # 필요한 라이브러리들을 임포트
 import cv2
 import ipywidgets.widgets ad widgets
@@ -19,6 +22,7 @@ image = cv2.VidepCapture(0, cv2.CAP_V4L2)
 ret, frame = image.read()
 image_widget.value = bgr8_to_jpeg(frame)
 
+# 라이브러리 import 및 함수 정의
 # 필요한 라이브러리들을 임포트
 import cv2
 import time
@@ -30,6 +34,7 @@ def bgr8_to_jpeg(value, quality = 75):
     # '.jpg' 포맷으로 이미지를 변환하고, 첫 번째 반환값을 사용, 이미지 데이터를 바이트 형태로 반환
     return bytes(cv2.imencode('.jpg', value)[1])
 
+# HSV 값 판별 함수 선언
 # 이미지를 받아 특정 영역의 색상을 분석하고, 그 색상이 어떤 색인지를 판별
 def get_color(img):
     H = []
@@ -41,7 +46,7 @@ def get_color(img):
     HSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
     # 직사각형 영역 내의 모든 픽셀에서 H (색상) 값만 추출하여 H 리스트에 저장
-    cv2.rectangle(img, (280, 180), (360, 260)m (0, 255, 0), 2)
+    cv2.rectangle(img, (280, 180), (360, 260), (0, 255, 0), 2)
     for i in range(280, 360):
         for j in range(180, 260): H.append(HSV[j, i][0])
     
@@ -62,6 +67,7 @@ def get_color(img):
     print(color_name)
     return img, color_name
 
+# 블록 색 인식 -> 코드 실행 후, 카메라로 결과 확인
 # 웹캠에서 비디오 캡처를 시작하고, 비디오의 크기 및 프레임 속도를 설정
 # 기본 웹캠을 사용하여 비디오 캡처
 cap = cv2.VideoCapture(0)

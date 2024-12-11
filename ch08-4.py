@@ -1,3 +1,4 @@
+# MNIST 데이터 학습모델 평가하기
 # library 불러오기
 import numpy as np # 배열 기반 수치 계산
 import pandas as pd # 데이터 로딩
@@ -50,6 +51,7 @@ dnn_hist = dnn.fit(x_train, y_train, epochs = 15, batch_size = 100, validation_s
 pred = dnn.predict(x_test)
 pred
 
+# 테스트 데이터의 확률
 pred[0]
 
 Y_test[0]

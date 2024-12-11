@@ -1,3 +1,4 @@
+# 데이터 학습모델
 # 1. 라이브러리 불러오기
 import numpy as np
 import pandas as pd
@@ -19,6 +20,7 @@ X_train = []
 for i in train_csv.index:
     X_train.append(train_csv.iloc[i][1:].values)
 
+# 학습 데이터 준비하기 (cont'd)
 # change list to array - data normalization for efficient data learning
 x_train = np.array(X_train) / 255.0
 
@@ -28,10 +30,10 @@ Y_train = train_csv["label"].values
 y_train = to_categorical(Y_train)
 
 # 4. 모델 만들기
-# 1. 입력층의 노드 수: 이미지의 크기 (28x28)
-# 2. 은닉층의 개수:
-# 3. 각 은닉층의 노드 수: 100
-# 4. 출력층의 노드 수: 분류하기 위한 클래스 수 (0 ~ 9)
+    # 1. 입력층의 노드 수: 이미지의 크기 (28x28)
+    # 2. 은닉층의 개수:
+    # 3. 각 은닉층의 노드 수: 100
+    # 4. 출력층의 노드 수: 분류하기 위한 클래스 수 (0 ~ 9)
 
 input_node = 28 * 28
 output_node = 10
